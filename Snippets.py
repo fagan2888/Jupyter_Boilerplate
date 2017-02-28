@@ -25,7 +25,7 @@ testO = pd.DataFrame()
 for i in range(20,30):
     testO[i] = [i-20]*20
 testO.index = pd.date_range('1/1/2014', periods = 20, freq='min')
-testGB = testO.T.groupby(testO.T.index // 3).mean().T
+testGB = testO.T.groupby(testO.T.reset_index(drop=True).index // 3).mean().T
 
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
     print("---Original---")
